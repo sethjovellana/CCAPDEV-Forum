@@ -164,8 +164,22 @@ header {
 }
 
 .forum-info {
+
+  height: 100px;
   padding: 20px;
   background-color: rgb(65, 60, 60);
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+}
+
+.forum-con{
+    display: flex;
+    flex-direction: column;
+}
+
+.button-layout{
+   padding: 5%; 
 }
 
 .chart {
