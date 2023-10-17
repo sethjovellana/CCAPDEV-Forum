@@ -349,3 +349,22 @@ header {
 .comment-container {
   margin-top: 40px;
 }
+
+
+/* * login.html */
+.center-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 100vh; /* Full viewport height */
+}
+
+.login-form {
+  text-align: center; /* Center content within the form */
+  background: black; 
+  border: solid 1px violet;
+  padding: 100px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 500px; 
+}
