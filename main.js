@@ -24,3 +24,16 @@ function showReply() {
   var replyArea = document.getElementById("reply-area");
   replyArea.setAttribute("style", "display:block;");
 }
+
+//logout
+
+document.addEventListener("DOMContentLoaded", function () {
+  const logoutButton = document.getElementById("logout-button");
+  if (logoutButton) {
+    logoutButton.addEventListener("click", function () {
+      
+      window.location.href = "logout.html";
+    });
+  }
+});
+
