@@ -312,10 +312,20 @@ header {
 .author {
   flex: 20%;
 }
+.commentUsername {
+  padding: 5%;
+  display: flex;
+  justify-content: flex-start;
+}
 
 .content {
   flex: 80%;
   display:grid;
+}
+
+.commentContainer {
+  display: flex;
+  align-items: center;
 }
 
 .body {
