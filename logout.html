@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="logout-container">
+        <h1>Are you sure you want to logout?</h1>
+        <button id="logout-yes">Yes</button>
+        <button id="logout-no">No</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const logoutYesButton = document.getElementById("logout-yes");
+            if (logoutYesButton) {
+                logoutYesButton.addEventListener("click", function () {
+                    window.location.href = "logout2.html";
+                });
+            }
+
+            const logoutNoButton = document.getElementById("logout-no");
+            if (logoutNoButton) {
+                logoutNoButton.addEventListener("click", function () {
+                    
+                    window.history.back();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+
