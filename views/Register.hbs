@@ -1,43 +1,76 @@
-    <div class="center-container">
-        <div class="registration-form">
-            <div>
-                <form action="" method="post">
-                    <h2> Registration </h2>
+<!-- registration Form -->
+<div class="center-container">
+  <div class="registration-form">
+    <div>
+      <form action="" method="post" id="registrationForm">
+        <h2> Registration </h2>
 
-                    <div class="profilePic">
-                        <label class="header">Profile Photo:</label>
-                        <input id="image" type="file" name="profile_photo" placeholder="Photo" required="" capture>
-                    </div>
-                    <br>
-                    <div class="content">
-                        <div class="input-box">
-                            <label for ="name">Full Name:</label>
-                            <input type = "text" placeholder="Enter Full Name" name="name" required>
-                        </div>
-                        <br>
-                        <div class="input-box">
-                            <label for ="username">Username:</label>
-                            <input type = "text" placeholder="Enter Username" name="username" required> (used for login!)
-                        </div>
-                        <br>
-                        <div class="input-box">
-                            <label for ="email">Email:</label>
-                            <input type = "email" placeholder="Enter Valid Email Address" name="email" required>
-                        </div>
-                        <br>
-                        <div class="input-box">
-                            <label for ="password">Password:</label>
-                            <input type = "password" placeholder="Enter Password" name="password" required>
-                        </div>
-                        <br>
-                        <div class="input-box">
-                            <label for ="Cpassword">Confirm Password:</label>
-                            <input type = "password" placeholder="Confirm Password" name="confirmpassword" required>
-                        </div>
-                        <br>
-                        <button type="Register" onclick="register()">Register</button>
-                    </div>
-                 
-            </div>
+        <div class="profilePic">
+          <label class="header">Profile Photo:</label>
+          <input
+            id="image"
+            type="file"
+            name="profile_photo"
+            placeholder="Photo"
+            required=""
+            capture
+          />
         </div>
+        <br />
+        <div class="content">
+          <div class="input-box">
+            <label for="name">Full Name:</label>
+            <input
+              type="text"
+              placeholder="Enter Full Name"
+              name="name"
+              required
+            />
+          </div>
+          <br />
+          <div class="input-box">
+            <label for="username">Username:</label>
+            <input
+              type="text"
+              placeholder="Enter Username"
+              name="username"
+              required
+            />
+          </div>
+          <br />
+          <div class="input-box">
+            <label for="email">Email:</label>
+            <input
+              type="email"
+              placeholder="Enter Valid Email Address"
+              name="email"
+              required
+            />
+          </div>
+          <br />
+          <div class="input-box">
+            <label for="password">Password:</label>
+            <input
+              type="password"
+              placeholder="Enter Password"
+              name="password"
+              required
+            />
+          </div>
+          <br />
+          <div class="input-box">
+            <label for="Cpassword">Confirm Password:</label>
+            <input
+              type="password"
+              placeholder="Confirm Password"
+              name="confirmpassword"
+              required
+            />
+          </div>
+          <br />
+          <button type="button" onclick="register()">Register</button>
+        </div>
+      </form>
     </div>
+  </div>
+</div>

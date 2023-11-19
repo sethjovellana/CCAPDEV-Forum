@@ -68,7 +68,74 @@ function login() {
       document.getElementById("loginMessage").innerHTML = "Invalid username or password";
   }
 }
-
 function register() {
-  window.location.href = "successfulRegister";
+  // Get form elements
+  var form = document.getElementById("registrationForm");
+  var password = form.elements["password"].value;
+  var confirmPassword = form.elements["confirmpassword"].value;
+
+  // Check if password and confirmPassword match
+  if (password === confirmPassword && form.checkValidity()) {
+      // If all conditions are met, redirect to successfulRegister.html
+      window.location.href = "successfulRegister";
+  } else {
+      // If passwords don't match or any other field is invalid, display notification
+      if (password !== confirmPassword) {
+          alert("Password and Confirm Password do not match. Please try again.");
+      } else {
+          // If any other field is invalid, submit the form to display browser's default validation messages
+          form.reportValidity();
+      }
+  }
 }
+// function register() {
+//   window.location.href = "successfulRegister";
+// }
+
+
+// MyProfile edit form
+function editProfile() {
+  // Have to replace the profile content with editedd form
+  document.getElementById('profileDescription').style.display = 'none';
+  document.getElementById('editProfileForm').style.display = 'block';
+
+  const currentDescription = document.getElementById('profileDescription').innerHTML.trim();
+  document.getElementById('newDescription').value = currentDescription;
+
+  // Hide the edit button when eduiting
+  document.querySelector('.comment button').style.display = 'none';
+}
+
+function cancelEdit() {
+  document.getElementById('profileDescription').style.display = 'block';
+  document.getElementById('editProfileForm').style.display = 'none';
+
+  // Show the edit button only when not editing
+  document.querySelector('.comment button').style.display = 'block';
+}
+
+function saveChanges() {
+  // Retrieve the values from the edit form
+  const newProfilePictureInput = document.getElementById('newProfilePicture');
+  const newDescription = document.getElementById('newDescription').value;
+
+  // Profile pIc:
+  if (newProfilePictureInput.files.length > 0) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+          // new image data
+          document.querySelector('.author img').src = e.target.result;
+      };
+      //for contents of the selected file
+      reader.readAsDataURL(newProfilePictureInput.files[0]);
+  }
+
+  // Apply the changes to the profile content
+  document.getElementById('profileDescription').innerHTML = newDescription;
+
+  document.getElementById('profileDescription').style.display = 'block';
+  document.getElementById('editProfileForm').style.display = 'none';
+
+  // Show the edit button
+  document.querySelector('.comment button').style.display = 'block';
+} 
