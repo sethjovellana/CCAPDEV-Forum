@@ -405,15 +405,16 @@ header {
 
 /* logout */
 
-.logout-button {
-  position: absolute;
+#logout-button {
   top: 10px;
   left: 10px;
-  color: #fff; /* Text color */
-  border: none;
+  color: whitesmoke; /* Text color */
+  border: 2px solid black;
   padding: 10px 20px;
   cursor: pointer;
   border-radius: 5px;
+  background-color: red;
+  font-size: large;
 }
 
 .logout-container {
@@ -436,9 +437,9 @@ header {
   flex: 20%;
 }
 
-.inquiry{
+/* .inquiry{
  
-}
+} */
 
 .answers{
 margin-left: 3%;

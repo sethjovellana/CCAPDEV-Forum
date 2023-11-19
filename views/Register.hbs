@@ -1,14 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CCAPDEV-WebForum</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-</head>
-<body>
-    <!-- registration Form -->
     <div class="center-container">
         <div class="registration-form">
             <div>
@@ -28,7 +17,7 @@
                         <br>
                         <div class="input-box">
                             <label for ="username">Username:</label>
-                            <input type = "text" placeholder="Enter Username" name="username" required>
+                            <input type = "text" placeholder="Enter Username" name="username" required> (used for login!)
                         </div>
                         <br>
                         <div class="input-box">
@@ -52,19 +41,3 @@
             </div>
         </div>
     </div>
-
-<!-- Its script -->
-
-    <script src="main.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const registerButton = document.getElementById("register-yes");
-            if (registerButton) {
-                registerButton.addEventListener("click", function () {
-                    window.location.href = "successfulRegister.html";
-                });
-            }
-        });
-    </script>
-</body>
-</html>
