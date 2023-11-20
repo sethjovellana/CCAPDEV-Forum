@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const comment = require("../models/comment.js");
+const comment = require("../models/forum.js");
 const app = express();
 
 
