@@ -385,23 +385,90 @@ header {
 }
 
 
-/* * login.html */
-.center-container {
-  display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  height: 100vh; /* Full viewport height */
-}
+/* * login.html start */
 
 .login-form {
-  text-align: center; /* Center content within the form */
-  background: black; 
-  border: solid 1px violet;
-  padding: 100px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  max-width: 500px; 
+  max-width: 400px;
+  background-color: #333; 
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  border: 5px solid purple; 
 }
+
+.loginForum {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 20px;
+
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#registerLink {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #bbb;
+}
+
+/* * login.html end*/
+
+/* registration styles start*/
+
+.registration-form {
+  max-width: 400px;
+  margin: 50px auto;
+  background-color: #333; 
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  border: 5px solid purple; 
+}
+
+.registerid {
+  text-align: center;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.profilePic {
+  margin: 20px 0;
+}
+
+.input-box {
+  margin-bottom: 15px;
+}
+
+label {
+  color: #e4e0e0;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  display: flex;
+  
+}
+
+/* registration styles end */
+
+
 
 /* logout */
 

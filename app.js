@@ -59,23 +59,10 @@ app.use("/successfulRegister", successfulRegisterRouter);
 
 // !important make sure to app.use Routers
 app.use(RegisterRouter);
+app.use(ForumPostsRouter);
+app.use(MyPostsRouter);
 
-// const User = require("./models/user");
-// run();
-// async function run() {
-//   try {
-//     const user = await User.create({
-//       name: "Seth",
-//       email: "seth@gmail.com",
-//       username: "sethhh",
-//     });
-//     user.createdAt = 5;
-//     await user.save();
-//     console.log(user);
-//   } catch (e) {
-//     console.log(e.message);
-//   }
-// }
+
 
 app.listen(port, () => {
   console.log(`app is listening to port ${port}`);
