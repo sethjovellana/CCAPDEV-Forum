@@ -233,3 +233,13 @@ function downvote(element) {
   const currentDownvotes = parseInt(downvoteCountElement.textContent);
   downvoteCountElement.textContent = currentDownvotes - 1;
 }
+
+//delete post button in MyPost, will delete post and all comments of post
+function deletePost() {
+  const confirmDelete = confirm("Are you sure you want to delete this post?");
+
+  if (confirmDelete) {
+    const postContainer = document.querySelector('.topic-container');
+    postContainer.remove();
+  }
+}
