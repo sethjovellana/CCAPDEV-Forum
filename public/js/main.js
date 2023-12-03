@@ -216,3 +216,20 @@ function submitPost() {
     alert("Please fill in both title and content before submitting.");
   }
 }
+
+// For up/down vote count
+function upvote(element) {
+  const postElement = element.closest('.table-row');
+
+  const upvoteCountElement = postElement.querySelector('.upvote-count');
+  const currentUpvotes = parseInt(upvoteCountElement.textContent);
+  upvoteCountElement.textContent = currentUpvotes + 1;
+
+}
+
+function downvote(element) {
+  const postElement = element.closest('.table-row');
+  const downvoteCountElement = postElement.querySelector('.downvote-count');
+  const currentDownvotes = parseInt(downvoteCountElement.textContent);
+  downvoteCountElement.textContent = currentDownvotes - 1;
+}
