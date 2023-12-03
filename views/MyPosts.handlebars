@@ -1,3 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CCAPDEV-WebForum</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+  </head>
+  <body>
     <header>
       <div class="navbar">
         <nav class="navigation hide" id="navigation">
@@ -6,19 +19,19 @@
               ><i class="fa fa-close"></i
             ></span>
             <li class="nav-item">
-              <a href="FAQ">FAQ</a>
+              <a href="FAQ.html">FAQ</a>
             </li>
             <li class="nav-item">
-              <a href="ForumPosts">Forum</a>
+              <a href="ForumPosts.html">Forum</a>
             </li>
             <li class="nav-item">
-              <a href="MyPosts">My Posts</a>
+              <a href="MyPosts.html">My Posts</a>
             </li>
             <li class="nav-item">
-              <a href="MyProfile">My Profile</a>
+              <a href="MyProfile.html">My Profile</a>
             </li>
             <li class="nav-item">
-              <a href="home">Home</a>
+              <a href="index.html">Home</a>
             </li>
           </ul>
         </nav>
@@ -44,30 +57,27 @@
       <!-- * Navigation -->
       <div class="navigate">
         <span
-          ><a href="home">back to home</a> >>
-          My Posts</span
+          ><a href="index.html">CCAPDEV - Home</a> >>
+          <a href="MyPosts.html">My Posts</a></span
         >
       </div>
-      <div class="add-post-button">
-          <button onclick="window.location.href = 'AddPost';">Add Post</button>
-        </div>
       <div class="topic-container">
         <div class="head">
           <div class="author">Author</div>
           <div class="content">Literature:Quote of the Day (1,432 Views)</div>
-
-  <div class="delete-button">
-            <button onclick="deletePost()">Delete Post</button>
-          </div>
-            
+           <div class="delete-button">
+      <button onclick="deletePost()">Delete Post</button>
+    </div>
         </div>
+
+        
 
         <div class="body">
           <div class="author">
             <div class="username"><a href="#">Storoberi</a></div>
-            <img src="/img/my-melody.png" alt="my melody" />
+            <img src="Images/my-melody.png" alt="my melody" />
             <div>Posts: <u>42</u></div>
-          </div>    
+          </div>
           
           <div class="content">
             “I saw that you were perfect, and so I loved you. Then I saw that
@@ -77,8 +87,8 @@
             </div>
           </div>
         </div>
-      </div>
-      
+
+
 
       <!-- ! Comment Input -->
       <div class="comment-area hide" id="comment-area">
@@ -96,23 +106,23 @@
         <div class="body">
           <div class="author">
             <div class="commentUsername"><a href="#">Travisscott</a></div>
-            <img src="/img/travisscott.jpg" alt="travis scott" />
+            <img src="Images/travisscott.jpg" alt="travis scott" />
             <div>Posts: <u>69</u></div>
 
             <div class="commentUsername"><a href="#">SwampLord</a></div>
-            <img src="/img/shrek.jpg" alt="shrek" />
+            <img src="Images/shrek.jpg" alt="shrek" />
             <div>Posts: <u>50</u></div>
-            
+
             <div class="commentUsername"><a href="#">ChosenOne</a></div>
-            <img src="/img/vader.jpg" alt="vader" />
+            <img src="Images/vader.jpg" alt="vader" />
             <div>Posts: <u>1080</u></div>
 
             <div class="commentUsername"><a href="#">HeroBoy</a></div>
-            <img src="/img/JoseRizal.jpg" alt="jose" />
+            <img src="Images/JoseRizal.jpg" alt="jose" />
             <div>Posts: <u>333</u></div>
 
             <div class="commentUsername"><a href="#">NotGrimace</a></div>
-            <img src="/img/barney.jpg" alt="barney" />
+            <img src="Images/barney.jpg" alt="barney" />
             <div>Posts: <u>200</u></div>
 
           </div>
@@ -151,16 +161,24 @@
             </div>
             <div class="comment">
               <button onclick="showReply()">Reply</button>
+
             </div>
             </div>
           </div>
         </div>
       </div>
   
-
       <!-- ! Reply Input -->
       <div class="comment-area hide" id="reply-area">
         <textarea name="comment" id="" placeholder="reply here..."></textarea>
         <input type="submit" value="submit" />
       </div>
+      </div>
     </div>
+    <script src="main.js"></script>
+  </body>
+</html>
+
+<div>
+
+</div>
