@@ -251,4 +251,36 @@ function deleteComment(element) {
   commentContainer.remove();
 }
 
+//For the up/down vote for posts
+
+let upvoteCount = 0;
+let downvoteCount = 0;
+
+function upvote(element) {
+  upvoteCount++;
+  updateVoteCounts();
+}
+
+function downvote(element) {
+  downvoteCount--;
+  updateVoteCounts();
+}
+
+function hoverButton(element) {
+  element.classList.add('hovered');
+}
+
+function unhoverButton(element) {
+  element.classList.remove('hovered');
+}
+
+function updateVoteCounts() {
+  const upvoteCountElement = document.querySelector('.upvote-count');
+  const downvoteCountElement = document.querySelector('.downvote-count');
+
+  upvoteCountElement.textContent = upvoteCount;
+  downvoteCountElement.textContent = downvoteCount;
+}
+
+
 
