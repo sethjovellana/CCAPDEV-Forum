@@ -200,21 +200,22 @@ header {
 }
 
 .table-head .status {
-  flex: 5%;
+  flex: 4%;
 }
 .table-head .subject {
-  flex: 65%;
+  flex: 63%;
 }
 .table-head .replies {
-  flex: 10%;
+  flex: 9%;
 }
 .table-head .last-reply {
-  flex: 15%;
+  flex: 14%;
 }
 
-.table-head .vote {
-  flex: 5%;
+.table-head .vote{
+  flex: 5.5%;
 }
+
 
 /* * table body */
 .table-row {
