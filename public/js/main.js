@@ -53,43 +53,102 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// login
-function login() {
-  var username = document.getElementById("username").value;
-  var password = document.getElementById("password").value;
+// login (old version)
+// async function login() {
+//   var username = document.getElementById("username").value;
+//   var password = document.getElementById("password").value;
 
-  if (username === "username" && password === "password") {
-    document.getElementById("loginMessage").innerHTML = "Login successful!";
+//   if (username === "username" && password === "password") {
+//     document.getElementById("loginMessage").innerHTML = "Login successful!";
 
-    window.location.href = "home";
-  } else {
-    document.getElementById("loginMessage").innerHTML =
-      "Invalid username or password";
+//     window.location.href = "home";
+//   } else {
+//     document.getElementById("loginMessage").innerHTML =
+//       "Invalid username or password";
+//   }
+// }
+
+async function login() {
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
+
+  try {
+    const response = await fetch("/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+    });
+
+    if (response.ok) {
+      // Redirect or perform other actions upon successful login
+      window.location.href = "home";
+    } else {
+      const errorData = await response.json();
+      alert(`Login failed: ${errorData.errorMessage}`);
+    }
+  } catch (error) {
+    console.error("Login error:", error);
+    alert("An error occurred. Please try again later.");
   }
 }
-function register() {
+
+async function register() {
   // Get form elements
   var form = document.getElementById("registrationForm");
+  var profile_photo = form.elements["profile_photo"].value;
+  var full_name = form.elements["name"].value; // full name
+  var user_name = form.elements["username"].value;
+  var email = form.elements["email"].value;
   var password = form.elements["password"].value;
   var confirmPassword = form.elements["confirmpassword"].value;
 
-  // Check if password and confirmPassword match
   if (password === confirmPassword && form.checkValidity()) {
-    // If all conditions are met, redirect to successfulRegister.html
-    window.location.href = "successfulRegister";
+    try {
+      const requestData = {
+        profile_photo: profile_photo,
+        full_name: full_name,
+        user_name: user_name,
+        email: email,
+        password: password,
+      };
+
+      const response = await fetch("/Register", {
+        method: "POST",
+        body: JSON.stringify(requestData), // Convert data to JSON string
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (response.ok) {
+        window.location.href = "successfulRegister";
+      } else {
+        const errorData = await response.json();
+        displayError(errorData.message);
+      }
+    } catch (error) {
+      console.error("Fetch error:", error);
+      displayError("An error occurred. Please try again later.");
+    }
   } else {
-    // If passwords don't match or any other field is invalid, display notification
     if (password !== confirmPassword) {
-      alert("Password and Confirm Password do not match. Please try again.");
+      displayError(
+        "Password and Confirm Password do not match. Please try again."
+      );
     } else {
-      // If any other field is invalid, submit the form to display browser's default validation messages
       form.reportValidity();
     }
   }
 }
-// function register() {
-//   window.location.href = "successfulRegister";
-// }
+
+function displayError(errorMessage) {
+  // Display the error message on the webpage (you can customize this based on your HTML structure)
+  const errorElement = document.getElementById("error-message");
+  errorElement.textContent = errorMessage;
+  errorElement.style.display = "block"; // Make the error message visible
+}
 
 // MyProfile edit form
 // MyProfile Page function:

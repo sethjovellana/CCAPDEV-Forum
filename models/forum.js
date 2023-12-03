@@ -1,8 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const model = mongoose.model;
 
-const commentSchema = new Schema({
+const commentSchema = new mongoose.Schema({
   post_id: {
     type: Schema.Types.ObjectId,
     required: true,
@@ -11,18 +10,15 @@ const commentSchema = new Schema({
   comment: String,
 });
 
-const UserSchema = new Schema({
+const UserSchema = new mongoose.Schema({
   profile_photo: String,
-  first_name: String,
-  last_name: String,
+  full_name: String,
+  user_name: String,
   email: String,
   password: String,
 });
 
-const Comment = model("Comment", commentSchema);
-const User = model("User", UserSchema);
-
 module.exports = {
-  Comment,
-  User,
+  User: mongoose.model("User", UserSchema),
+  Comment: mongoose.model("Comment", commentSchema),
 };

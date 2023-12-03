@@ -38,7 +38,7 @@ app.get("/login", (req, res) => {
   res.render("login");
 });
 
-const homeRouter = require("./routes/home")
+const homeRouter = require("./routes/home");
 const MyProfileRouter = require("./routes/MyProfile");
 const MyPostsRouter = require("./routes/MyPosts");
 const ForumPostsRouter = require("./routes/ForumPosts");
@@ -67,10 +67,11 @@ app.use(RegisterRouter);
 app.use(ForumPostsRouter);
 app.use(MyPostsRouter);
 
-
 app.listen(port, () => {
   console.log(`app is listening to port ${port}`);
-  mongoose.connect(process.env.MONGODB_URI, { dbname: process.env.DB_NAME }).then(() => {
-    console.log(process.env.DB_NAME + " db"+ " connected");
-  });
+  mongoose
+    .connect(process.env.MONGODB_URI, { dbname: process.env.DB_NAME })
+    .then(() => {
+      console.log(process.env.DB_NAME + " db" + " connected");
+    });
 });

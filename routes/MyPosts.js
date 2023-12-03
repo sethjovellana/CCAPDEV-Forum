@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const upload = require("../models/forum.js");
+const { User, Comment } = require("../models/forum.js");
 const app = express();
 
 router.get("/", (req, res) => {
@@ -22,7 +22,7 @@ router.route("/uploads").get(function (req, res) {
 });
 
 router.route("/uploads").post(function (req, res) {
-  const Upload = new upload({
+  const Upload = new Comment({
     title: req.body.title,
     content: req.body.content,
     image: req.body.image,
