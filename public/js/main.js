@@ -243,3 +243,12 @@ function deletePost() {
     postContainer.remove();
   }
 }
+
+
+// Deletes comment in a post in MyPost page
+function deleteComment(element) {
+  const commentContainer = element.closest('.comment-container');
+  commentContainer.remove();
+}
+
+
