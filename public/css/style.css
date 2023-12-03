@@ -587,3 +587,16 @@ button:hover {
   background-color: #2980b9;
 }
 
+.votePost {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.fas.fa-arrow-up.hovered {
+  color: red;
+}
+
+.fas.fa-arrow-down.hovered {
+  color: red;
+}
