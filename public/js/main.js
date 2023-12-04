@@ -68,24 +68,40 @@ document.addEventListener("DOMContentLoaded", function () {
 //   }
 // }
 
-async function login() {
-  const username = document.getElementById("username").value;
+async function submitLoginForm(event) {
+  event.preventDefault(); // Prevent the default form submission behavior
+
+  const user_name = document.getElementById("username").value;
   const password = document.getElementById("password").value;
 
+  console.log("Login data:", { user_name, password });
   try {
     const response = await fetch("/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ user_name, password }),
     });
 
     if (response.ok) {
       // Redirect or perform other actions upon successful login
       window.location.href = "home";
+    } else if (response.status === 404) {
+      alert("User not found. Please check your username.");
+    } else if (response.status === 401) {
+      alert("Invalid password. Please try again.");
     } else {
-      const errorData = await response.json();
+      alert("An unexpected error occurred. Please try again later.");
+      try {
+        errorData = await response.json();
+      } catch (jsonError) {
+        // If parsing as JSON fails, assume it's HTML/text
+        console.error("Non-JSON error response:", response.statusText);
+        alert("Login failed. An unexpected error occurred.");
+        return;
+      }
+
       alert(`Login failed: ${errorData.errorMessage}`);
     }
   } catch (error) {
@@ -121,7 +137,7 @@ async function register() {
           "Content-Type": "application/json",
         },
       });
-
+      console.log(response);
       if (response.ok) {
         window.location.href = "successfulRegister";
       } else {
@@ -217,6 +233,7 @@ function submitPost() {
   }
 }
 
+<<<<<<< Updated upstream
 // For up/down vote count
 function upvote(element) {
   const postElement = element.closest('.table-row');
@@ -284,3 +301,44 @@ function updateVoteCounts() {
 
 
 
+=======
+//Comments
+//Function to fetch comments
+//async function fetchcomments(postId) {
+//  try {
+/*    const response = await fetch(`/comments/${postId}`);
+    if (response.ok) {
+      const comments = await response.json();
+      console.log("Comments:", comments);
+    } else {
+      const errorData = await response.json();
+      console.error("Error fetching comments:", errorData.message);
+    }
+  } catch (error) {
+    console.error("Fetch error:", error);
+  }
+}
+
+// Function to add a new comment
+async function addComment(postId, name, comment) {
+  try {
+    const response = await fetch("/comments", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ post_id: postId, name, comment }),
+    });
+
+    if (response.ok) {
+      const newComment = await response.json();
+      console.log("New Comment:", newComment);
+    } else {
+      const errorData = await response.json();
+      console.error("Error adding comment:", errorData.message);
+    }
+  } catch (error) {
+    console.error("Fetch error:", error);
+  }
+}*/
+>>>>>>> Stashed changes

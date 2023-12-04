@@ -2,7 +2,7 @@
 <div class="center-container">
   <div class="login-form">
     <div class="loginForum">Login to My Forum</div>
-    <form id="loginForm" action="/login" method="post">
+    <form id="loginForm" action="/login" method="POST">
 
       <div class="form-group">
         <div class="labelPass">Username:</div>
@@ -16,7 +16,7 @@
         <br />
         <input type="password" id="password" name="password" required />
       </div>
-      <button type="button" onclick="login()">Login</button>
+      <button type="submit" onclick="submitLoginForm(event)">Login</button>
        <div id="registerLink">Don't have an account yet? <a href="Register" id="signup-link">Sign Up</a></div>
     </form>
     <p id="loginMessage"></p>
