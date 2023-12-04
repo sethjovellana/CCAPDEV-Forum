@@ -233,7 +233,6 @@ function submitPost() {
   }
 }
 
-<<<<<<< Updated upstream
 // For up/down vote count
 function upvote(element) {
   const postElement = element.closest('.table-row');
@@ -301,44 +300,3 @@ function updateVoteCounts() {
 
 
 
-=======
-//Comments
-//Function to fetch comments
-//async function fetchcomments(postId) {
-//  try {
-/*    const response = await fetch(`/comments/${postId}`);
-    if (response.ok) {
-      const comments = await response.json();
-      console.log("Comments:", comments);
-    } else {
-      const errorData = await response.json();
-      console.error("Error fetching comments:", errorData.message);
-    }
-  } catch (error) {
-    console.error("Fetch error:", error);
-  }
-}
-
-// Function to add a new comment
-async function addComment(postId, name, comment) {
-  try {
-    const response = await fetch("/comments", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ post_id: postId, name, comment }),
-    });
-
-    if (response.ok) {
-      const newComment = await response.json();
-      console.log("New Comment:", newComment);
-    } else {
-      const errorData = await response.json();
-      console.error("Error adding comment:", errorData.message);
-    }
-  } catch (error) {
-    console.error("Fetch error:", error);
-  }
-}*/
->>>>>>> Stashed changes
