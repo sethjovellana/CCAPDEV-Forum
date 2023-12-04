@@ -32,7 +32,7 @@ router.route("/uploads").post(function (req, res) {
 });
 
 // Get comments for a specific post
-app.get("/comments/:post_id", async (req, res) => {
+router.get("/comments/:post_id", async (req, res) => {
   const post_id = req.params.post_id;
 
   try {
@@ -44,7 +44,7 @@ app.get("/comments/:post_id", async (req, res) => {
 });
 
 // Add a comment to a post
-app.post("/comments", async (req, res) => {
+router.post("/comments", async (req, res) => {
   const { post_id, name, comment } = req.body;
 
   const newComment = new Comment({
@@ -61,8 +61,30 @@ app.post("/comments", async (req, res) => {
   }
 });
 
+// Edit a comment by ID
+router.put("/comments/:id", async (req, res) => {
+  const id = req.params.id;
+  const { comment } = req.body;
+
+  try {
+    const updatedComment = await Comment.findByIdAndUpdate(
+      id,
+      { comment },
+      { new: true }
+    );
+
+    if (updatedComment) {
+      res.json(updatedComment);
+    } else {
+      res.status(404).json({ message: "Comment not found" });
+    }
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 // Delete a comment by ID
-app.delete("/comments/:id", async (req, res) => {
+router.delete("/comments/:id", async (req, res) => {
   const id = req.params.id;
 
   try {
@@ -79,3 +101,4 @@ app.delete("/comments/:id", async (req, res) => {
 });
 
 module.exports = router;
+

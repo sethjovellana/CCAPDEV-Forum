@@ -55,6 +55,7 @@
            <div class="delete-button">
       <button onclick="deletePost()">Delete Post</button>
     </div>
+        <button onclick="editPost()">Edit Post</button>
         </div>
 
         
@@ -67,8 +68,22 @@
           </div>
           
           <div class="content">
-            “I saw that you were perfect, and so I loved you. Then I saw that
-            you were not perfect and I loved you even more.” – Angelita Lim
+            <div id="postContent">“I saw that you were perfect, and so I loved you. Then I saw that
+              you were not perfect and I loved you even more.” – Angelita Lim</div>
+
+            <!--Edit Post-->
+              <div id="editPostForm" style="display: none;">
+                <form id="editForm" enctype="multipart/form-data">          
+                  <label for="newPost">Edited Post:</label>
+                  <textarea id="newPost" name="newPost"></textarea>
+                  <br />
+                  <br />
+                  <br />
+                  <button type="button" onclick="saveChanges()">Save Changes</button>
+                  <button type="button" onclick="cancelEdit()">Cancel</button>
+                </form>
+              </div>
+
             <div class="comment">
               <button onclick="showComment()">Comment</button>
                
@@ -129,8 +144,9 @@
             <div class="comment">
               <button onclick="showReply()">Reply</button>
                 <div class="delete-button">
-        <button onclick="deleteComment(this)">Delete Comment</button>
+        <button onclick="deleteComment(commentID)">Delete Comment</button>
       </div>
+      <button onclick="editComment(commentID)">Edit Comment</button>
             </div>
 
             <div class="commentContainer">
@@ -139,8 +155,9 @@
             <div class="comment">
               <button onclick="showReply()">Reply</button>
                 <div class="delete-button">
-        <button onclick="deleteComment(this)">Delete Comment</button>
+        <button onclick="deleteComment(commentID)">Delete Comment</button>
       </div>
+      <button onclick="editComment(commentID)">Edit Comment</button>
             </div>
 
             <div class="commentContainer">
@@ -149,8 +166,9 @@
             <div class="comment">
               <button onclick="showReply()">Reply</button>
                 <div class="delete-button">
-        <button onclick="deleteComment(this)">Delete Comment</button>
+        <button onclick="deleteComment(commentID)">Delete Comment</button>
       </div>
+      <button onclick="editComment(commentID)">Edit Comment</button>
             </div>
 
             <div class="commentContainer">
@@ -159,8 +177,9 @@
             <div class="comment">
               <button onclick="showReply()">Reply</button>
                 <div class="delete-button">
-        <button onclick="deleteComment(this)">Delete Comment</button>
+        <button onclick="deleteComment(commentID)">Delete Comment</button>
       </div>
+      <button onclick="editComment(commentID)">Edit Comment</button>
             </div>
 
             <div class="commentContainer">
@@ -169,8 +188,9 @@
             <div class="comment">
               <button onclick="showReply()">Reply</button>
                 <div class="delete-button">
-        <button onclick="deleteComment(this)">Delete Comment</button>
+        <button onclick="deleteComment(commentID)">Delete Comment</button>
       </div>
+      <button onclick="editComment(commentID)">Edit Comment</button>
             </div>
             </div>
           </div>

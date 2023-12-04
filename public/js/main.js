@@ -53,21 +53,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// login (old version)
-// async function login() {
-//   var username = document.getElementById("username").value;
-//   var password = document.getElementById("password").value;
-
-//   if (username === "username" && password === "password") {
-//     document.getElementById("loginMessage").innerHTML = "Login successful!";
-
-//     window.location.href = "home";
-//   } else {
-//     document.getElementById("loginMessage").innerHTML =
-//       "Invalid username or password";
-//   }
-// }
-
 async function submitLoginForm(event) {
   event.preventDefault(); // Prevent the default form submission behavior
 
@@ -267,6 +252,45 @@ function deleteComment(element) {
   commentContainer.remove();
 }
 
+// Create Comment
+function createComment() {
+  const commentText = document.getElementById("comment-text").value.trim();
+
+  // Check if the comment is not empty
+  if (commentText !== "") {
+    fetch("/comments", { method: 'POST', body: JSON.stringify({ text: commentText }), headers: { 'Content-Type': 'application/json' } })
+
+    alert("Comment created successfully!");
+  } else {
+    alert("Please enter a comment before submitting.");
+  }
+}
+
+// Edit Comment
+function editComment(element) {
+  const commentContainer = element.closest('.comment-container');
+  const commentTextElement = commentContainer.querySelector('.comment-text');
+  const currentCommentText = commentTextElement.textContent;
+
+  const updatedCommentText = prompt("Edit your comment:", currentCommentText);
+
+  if (updatedCommentText !== null) {
+     fetch(`/comments/${commentId}`, { method: 'PUT', body: JSON.stringify({ text: updatedCommentText }), headers: { 'Content-Type': 'application/json' } })
+    commentTextElement.textContent = updatedCommentText;
+  }
+}
+
+// Delete Comment
+function deleteComment(element) {
+  const commentContainer = element.closest('.comment-container');
+  const confirmDelete = confirm("Are you sure you want to delete this comment?");
+
+  if (confirmDelete) {
+   fetch(`/comments/${commentId}`, { method: 'DELETE' })
+    commentContainer.remove();
+  }
+}
+
 //For the up/down vote for posts
 
 let upvoteCount = 0;
@@ -298,5 +322,58 @@ function updateVoteCounts() {
   downvoteCountElement.textContent = downvoteCount;
 }
 
+//EDIT POST FEATURE
+function editPost() {
+  // Have to replace the profile content with editedd form
+  document.getElementById("postContent").style.display = "none";
+  document.getElementById("editPostForm").style.display = "block";
+
+  const currentDescription = document
+    .getElementById("postContent")
+    .innerHTML.trim();
+  document.getElementById("newPost").value = currentDescription;
+
+  // Hide the edit button when eduiting
+  document.querySelector(".comment button").style.display = "none";
+}
+
+function cancelEdit() {
+  document.getElementById("postContent").style.display = "block";
+  document.getElementById("editPostForm").style.display = "none";
+
+  // Show the edit button only when not editing
+  document.querySelector(".comment button").style.display = "block";
+}
+
+function saveChanges() {
+  const newDescription = document.getElementById("newPost").value;
+
+
+  // Apply the changes to the profile content
+  document.getElementById("postContent").innerHTML = newPost;
+
+  document.getElementById("postContent").style.display = "block";
+  document.getElementById("editPostForm").style.display = "none";
+
+  // Show the edit button
+  document.querySelector(".comment button").style.display = "block";
+}
+
+// AddPost
+
+function submitPost() {
+  // Get values from the input fields
+  var postTitle = document.getElementById("post-title").value.trim();
+  var postContent = document.getElementById("post-content").value.trim();
+
+  // Check if both title and content have content
+  if (postTitle !== "" && postContent !== "") {
+    // Redirect to index.html
+    window.location.href = "MyPosts";
+  } else {
+    // Display an alert or handle the case when either title or content is empty
+    alert("Please fill in both title and content before submitting.");
+  }
+}
 
 
