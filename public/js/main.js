@@ -220,17 +220,16 @@ function submitPost() {
 
 // For up/down vote count
 function upvote(element) {
-  const postElement = element.closest('.table-row');
+  const postElement = element.closest(".table-row");
 
-  const upvoteCountElement = postElement.querySelector('.upvote-count');
+  const upvoteCountElement = postElement.querySelector(".upvote-count");
   const currentUpvotes = parseInt(upvoteCountElement.textContent);
   upvoteCountElement.textContent = currentUpvotes + 1;
-
 }
 
 function downvote(element) {
-  const postElement = element.closest('.table-row');
-  const downvoteCountElement = postElement.querySelector('.downvote-count');
+  const postElement = element.closest(".table-row");
+  const downvoteCountElement = postElement.querySelector(".downvote-count");
   const currentDownvotes = parseInt(downvoteCountElement.textContent);
   downvoteCountElement.textContent = currentDownvotes - 1;
 }
@@ -240,20 +239,19 @@ function deletePost() {
   const confirmDelete = confirm("Are you sure you want to delete this post?");
 
   if (confirmDelete) {
-    const postContainer = document.querySelector('.topic-container');
+    const postContainer = document.querySelector(".topic-container");
     postContainer.remove();
   }
 }
 
-
 // Deletes comment in a post in MyPost page
 function deleteComment(element) {
-  const commentContainer = element.closest('.comment-container');
+  const commentContainer = element.closest(".comment-container");
   commentContainer.remove();
 }
 
 // Create Comment
-function createComment() {
+/*function createComment() {
   const commentText = document.getElementById("comment-text").value.trim();
 
   // Check if the comment is not empty
@@ -289,7 +287,7 @@ function deleteComment(element) {
    fetch(`/comments/${commentId}`, { method: 'DELETE' })
     commentContainer.remove();
   }
-}
+}*/
 
 //For the up/down vote for posts
 
@@ -307,19 +305,85 @@ function downvote(element) {
 }
 
 function hoverButton(element) {
-  element.classList.add('hovered');
+  element.classList.add("hovered");
 }
 
 function unhoverButton(element) {
-  element.classList.remove('hovered');
+  element.classList.remove("hovered");
 }
 
 function updateVoteCounts() {
-  const upvoteCountElement = document.querySelector('.upvote-count');
-  const downvoteCountElement = document.querySelector('.downvote-count');
+  const upvoteCountElement = document.querySelector(".upvote-count");
+  const downvoteCountElement = document.querySelector(".downvote-count");
 
   upvoteCountElement.textContent = upvoteCount;
   downvoteCountElement.textContent = downvoteCount;
+}
+
+// Edit Comment
+function editComment(commentId) {
+  const updatedCommentText = prompt("Edit your comment:");
+
+  if (updatedCommentText !== null) {
+    fetch(`/comments/${commentId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ comment: updatedCommentText }),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Error updating comment: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((updatedComment) => {
+        // Update the UI with the updated comment
+        const commentContainer = document.querySelector(
+          `.comment-container[data-comment-id="${commentId}"]`
+        );
+        const commentTextElement =
+          commentContainer.querySelector(".commentContainer");
+        commentTextElement.textContent = updatedComment.comment;
+      })
+      .catch((error) => {
+        // Handle errors
+        console.error(error);
+        alert("Error updating comment. Please try again.");
+      });
+  }
+}
+
+// Delete Comment
+function deleteComment(commentId) {
+  const confirmDelete = confirm(
+    "Are you sure you want to delete this comment?"
+  );
+
+  if (confirmDelete) {
+    fetch(`/comments/${commentId}`, {
+      method: "DELETE",
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Error deleting comment: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(() => {
+        // Remove the comment container from the UI
+        const commentContainer = document.querySelector(
+          `.comment-container[data-comment-id="${commentId}"]`
+        );
+        commentContainer.remove();
+      })
+      .catch((error) => {
+        // Handle errors
+        console.error(error);
+        alert("Error deleting comment. Please try again.");
+      });
+  }
 }
 
 //EDIT POST FEATURE
@@ -348,7 +412,6 @@ function cancelEdit() {
 function saveChanges() {
   const newDescription = document.getElementById("newPost").value;
 
-
   // Apply the changes to the profile content
   document.getElementById("postContent").innerHTML = newPost;
 
@@ -375,5 +438,3 @@ function submitPost() {
     alert("Please fill in both title and content before submitting.");
   }
 }
-
-

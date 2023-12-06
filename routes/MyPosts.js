@@ -100,5 +100,26 @@ router.delete("/comments/:id", async (req, res) => {
   }
 });
 
-module.exports = router;
+// Edit a post by ID
+router.put("/posts/:id", async (req, res) => {
+  const id = req.params.id;
+  const { content } = req.body;
 
+  try {
+    const updatedPost = await Post.findByIdAndUpdate(
+      id,
+      { content },
+      { new: true }
+    );
+
+    if (updatedPost) {
+      res.json(updatedPost);
+    } else {
+      res.status(404).json({ message: "Post not found" });
+    }
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+module.exports = router;
