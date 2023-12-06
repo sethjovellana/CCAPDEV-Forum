@@ -177,7 +177,7 @@ function cancelEdit() {
 
 function saveChanges() {
   // Retrieve the values from the edit form
-  const newProfilePictureInput = document.getElementById("newProfilePicture");
+  const newProfilePictureInput = document.getElementById("newProfilePicture").value;
   const newDescription = document.getElementById("newDescription").value;
 
   // Profile pIc:

@@ -9,5 +9,9 @@ Installation: Instructions on how to install and set up the DLSU Forum web appli
 notes:
 naming in the routes does not correspond to the database naming variables
 
+<<<<<<< Updated upstream
 deployed web app:
 https://mcforum-nyiw.onrender.com
+=======
+
+>>>>>>> Stashed changes
