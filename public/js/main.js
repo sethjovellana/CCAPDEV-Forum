@@ -474,6 +474,8 @@ function saveChanges() {
 }
 // AddPost
 
+// AddPost
+
 function submitPost() {
   // Get values from the input fields
   var postTitle = document.getElementById("post-title").value.trim();
