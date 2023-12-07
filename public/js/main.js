@@ -295,12 +295,22 @@ let upvoteCount = 0;
 let downvoteCount = 0;
 
 function upvote(element) {
-  upvoteCount++;
+  if (!upvoteCount){
+    upvoteCount++;
+  }
+  else{
+    upvoteCount--
+  }
   updateVoteCounts();
 }
 
 function downvote(element) {
-  downvoteCount--;
+  if (!downvoteCount){
+    downvoteCount--;
+  }
+  else{
+    downvoteCount++;
+  }
   updateVoteCounts();
 }
 
