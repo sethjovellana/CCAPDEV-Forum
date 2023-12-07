@@ -249,7 +249,7 @@ function deletePost() {
 }
 
 // Create Comment
-/*function createComment() {
+function createComment() {
   const commentText = document.getElementById("comment-text").value.trim();
 
   // Check if the comment is not empty
