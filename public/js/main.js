@@ -234,20 +234,18 @@ function downvote(element) {
   downvoteCountElement.textContent = currentDownvotes - 1;
 }
 
-//delete post button in MyPost, will delete post and all comments of post
 function deletePost() {
+  // Optionally, you can show a confirmation dialog before deleting
   const confirmDelete = confirm("Are you sure you want to delete this post?");
 
   if (confirmDelete) {
-    const postContainer = document.querySelector(".topic-container");
+    // Find the post container and remove it
+    const postContainer = document.querySelector('.topic-container');
     postContainer.remove();
-  }
-}
 
-// Deletes comment in a post in MyPost page
-function deleteComment(element) {
-  const commentContainer = element.closest(".comment-container");
-  commentContainer.remove();
+    // Optionally, you can send a request to the server to delete the post
+    // This is just a client-side removal; actual deletion should happen on the server
+  }
 }
 
 // Create Comment
@@ -369,36 +367,6 @@ function editComment(commentId) {
   }
 }
 
-// Delete Comment
-function deleteComment(commentId) {
-  const confirmDelete = confirm(
-    "Are you sure you want to delete this comment?"
-  );
-
-  if (confirmDelete) {
-    fetch(`/comments/${commentId}`, {
-      method: "DELETE",
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Error deleting comment: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then(() => {
-        // Remove the comment container from the UI
-        const commentContainer = document.querySelector(
-          `.comment-container[data-comment-id="${commentId}"]`
-        );
-        commentContainer.remove();
-      })
-      .catch((error) => {
-        // Handle errors
-        console.error(error);
-        alert("Error deleting comment. Please try again.");
-      });
-  }
-}
 
 //EDIT POST FEATURE
 function editPost() {
