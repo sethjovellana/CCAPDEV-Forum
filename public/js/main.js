@@ -430,27 +430,48 @@ function editPost() {
 }
 
 
-function cancelEdit() {
-  document.getElementById("postContent").style.display = "block";
-  document.getElementById("editPostForm").style.display = "none";
 
-  // Show the edit button only when not editing
-  document.querySelector(".comment button").style.display = "block";
+
+// Function to cancel post editing
+function cancelEditPost() {
+  // Find the post container element
+  const postContainer = document.querySelector('.topic-container');
+
+  // Toggle back to displaying the post content
+  const postContent = postContainer.querySelector('#postContent');
+  const editPostForm = postContainer.querySelector('#editPostForm');
+  const editButton = postContainer.querySelector('.topic-container button');
+
+  if (postContent && editPostForm && editButton) {
+    // Show the current post content
+    postContent.style.display = 'block';
+
+    // Hide the edit form and show the "Edit Post" button
+    editPostForm.style.display = 'none';
+    editButton.style.display = 'block';
+  }
 }
 
+// Function to save post changes
 function saveChanges() {
+  // Get the new post content from the form
   const newDescription = document.getElementById("newPost").value;
 
-  // Apply the changes to the profile content
-  document.getElementById("postContent").innerHTML = newPost;
+  // Apply the changes to the post content
+  const postContent = document.getElementById("postContent");
+  postContent.textContent = newDescription;
 
-  document.getElementById("postContent").style.display = "block";
-  document.getElementById("editPostForm").style.display = "none";
+  // Hide the edit form and show the post content
+  const editPostForm = document.getElementById("editPostForm");
+  editPostForm.style.display = "none";
+  postContent.style.display = "block";
 
-  // Show the edit button
-  document.querySelector(".comment button").style.display = "block";
+  // Show the "Edit Post" button
+  const editButton = document.querySelector(".comment button");
+  if (editButton) {
+    editButton.style.display = "block";
+  }
 }
-
 // AddPost
 
 function submitPost() {
