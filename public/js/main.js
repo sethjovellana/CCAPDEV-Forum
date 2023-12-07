@@ -401,19 +401,34 @@ function editComment(element) {
 
 
 //EDIT POST FEATURE
+//EDIT POST 
 function editPost() {
-  // Have to replace the profile content with editedd form
-  document.getElementById("postContent").style.display = "none";
-  document.getElementById("editPostForm").style.display = "block";
+  // Hide the post content and show the edit form
+  const postContent = document.getElementById("postContent");
+  const editPostForm = document.getElementById("editPostForm");
 
-  const currentDescription = document
-    .getElementById("postContent")
-    .innerHTML.trim();
+  postContent.style.display = "none";
+  editPostForm.style.display = "block";
+
+  // Get the current post content and set it in the edit form
+  const currentDescription = postContent.textContent.trim();
   document.getElementById("newPost").value = currentDescription;
 
-  // Hide the edit button when eduiting
-  document.querySelector(".comment button").style.display = "none";
+  // Hide the comment button when editing
+  const commentButton = document.querySelector('.comment button');
+  if (commentButton) {
+    commentButton.style.display = 'none';
+  }
+
+  // Show the save and cancel buttons
+  const saveButton = document.getElementById("saveChangesButton");
+  const cancelButton = document.getElementById("cancelEditButton");
+  if (saveButton && cancelButton) {
+    saveButton.style.display = "block";
+    cancelButton.style.display = "block";
+  }
 }
+
 
 function cancelEdit() {
   document.getElementById("postContent").style.display = "block";
