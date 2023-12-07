@@ -278,16 +278,20 @@ function editComment(element) {
   }
 }
 
-// Delete Comment
+//#3 Deletes comment in a post
 function deleteComment(element) {
-  const commentContainer = element.closest('.comment-container');
-  const confirmDelete = confirm("Are you sure you want to delete this comment?");
+  // Find the parent comment container element
+  const commentContainer = element.closest('.comment');
 
-  if (confirmDelete) {
-   fetch(`/comments/${commentId}`, { method: 'DELETE' })
-    commentContainer.remove();
+  // Replace the comment content with "deleted comment"
+  const commentContent = commentContainer.querySelector('.commentContainer');
+  if (commentContent) {
+    commentContent.innerHTML = '<span style="color: red;">Deleted comment</span>';
   }
-}*/
+
+  // Optionally, you can send the comment deletion data to the server here
+  // Example: sendDeleteCommentRequest(commentId);
+}
 
 //For the up/down vote for posts
 
