@@ -276,6 +276,32 @@ function editComment(element) {
   }
 }
 
+
+//save edied
+//save edited comment
+function saveEditedComment(element) {
+  // Find the parent comment container element
+  const commentContainer = element.closest('.comment');
+
+  // Find the edited comment content
+  const editedCommentContent = commentContainer.querySelector('.edited-comment-content');
+
+  // Update the original comment content with the edited content
+  const commentContent = commentContainer.querySelector('.commentContainer');
+  if (commentContent) {
+    commentContent.textContent = editedCommentContent.value;
+  }
+
+  // Toggle back to displaying the comment content
+  commentContent.style.display = 'block';
+  const editForm = commentContainer.querySelector('.edit-comment-form');
+  if (editForm) {
+    editForm.style.display = 'none';
+  }
+}
+
+
+
 //#3 Deletes comment in a post
 function deleteComment(element) {
   // Find the parent comment container element
