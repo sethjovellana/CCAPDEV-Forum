@@ -332,38 +332,23 @@ function updateVoteCounts() {
   downvoteCountElement.textContent = downvoteCount;
 }
 
-// Edit Comment
-function editComment(commentId) {
-  const updatedCommentText = prompt("Edit your comment:");
+// EDIT COMMENT 
+//edit
+function editComment(element) {
+  // Find the parent comment container element
+  const commentContainer = element.closest('.comment');
 
-  if (updatedCommentText !== null) {
-    fetch(`/comments/${commentId}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ comment: updatedCommentText }),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Error updating comment: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((updatedComment) => {
-        // Update the UI with the updated comment
-        const commentContainer = document.querySelector(
-          `.comment-container[data-comment-id="${commentId}"]`
-        );
-        const commentTextElement =
-          commentContainer.querySelector(".commentContainer");
-        commentTextElement.textContent = updatedComment.comment;
-      })
-      .catch((error) => {
-        // Handle errors
-        console.error(error);
-        alert("Error updating comment. Please try again.");
-      });
+  // Toggle between displaying the comment content and the edit form
+  const commentContent = commentContainer.querySelector('.commentContainer');
+  const editForm = commentContainer.querySelector('.edit-comment-form');
+  const editButton = commentContainer.querySelector('button'); // Assuming it's the first button, you might need to adjust this selector
+
+  if (commentContent && editForm && editButton) {
+    commentContent.style.display = 'none';
+    editForm.style.display = 'block';
+    
+    // Hide the "Edit Comment" button
+    editButton.style.display = 'none';
   }
 }
 
