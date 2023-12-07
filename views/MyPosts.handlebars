@@ -149,6 +149,16 @@
               <button onclick="editComment(this)">Edit Comment</button>
             </div>
 
+<!-- Edit Comment Form (initially hidden) -->
+               <div class="edit-comment-form" style="display: none;">
+                <textarea class="edited-comment-content"></textarea>
+                <button onclick="saveEditedComment(this)">Save Changes</button>
+                <button onclick="cancelEditComment(this)">Cancel</button>
+              </div>
+          </div>
+            
+
+             
             <div class="commentContainer">
               Inspirational! Amazing!
             </div>
