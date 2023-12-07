@@ -302,6 +302,27 @@ function saveEditedComment(element) {
 
 
 
+
+
+function cancelEditComment(element) {
+  // Find the parent comment container element
+  const commentContainer = element.closest('.comment');
+
+  // Toggle back to displaying the comment content
+  const commentContent = commentContainer.querySelector('.commentContainer');
+  if (commentContent) {
+    commentContent.style.display = 'block';
+  }
+
+  const editForm = commentContainer.querySelector('.edit-comment-form');
+  if (editForm) {
+    editForm.style.display = 'none';
+  }
+}
+
+
+
+
 //#3 Deletes comment in a post
 function deleteComment(element) {
   // Find the parent comment container element
