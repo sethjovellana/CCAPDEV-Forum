@@ -68,10 +68,12 @@
           </div>
           
           <div class="content">
-            <div id="postContent">“I saw that you were perfect, and so I loved you. Then I saw that
+        <div id="postContent">“I saw that you were perfect, and so I loved you. Then I saw that
               you were not perfect and I loved you even more.” – Angelita Lim</div>
+            
+            <div class="comment">
 
-            <!--Edit Post-->
+<!--ADDED THIS-->
               <div id="editPostForm" style="display: none;">
                 <form id="editForm" enctype="multipart/form-data">          
                   <label for="newPost">Edited Post:</label>
@@ -79,12 +81,13 @@
                   <br />
                   <br />
                   <br />
-                  <button type="button" onclick="saveChanges()">Save Changes</button>
-                  <button type="button" onclick="cancelEdit()">Cancel</button>
+                  <button type="button" id="saveChangesButton" onclick="saveChanges()">Save Changes</button>
+                  <button type="button" id="cancelEditButton" onclick="cancelEditPost()">Cancel</button>
                 </form>
               </div>
 
-            <div class="comment">
+
+
               <button onclick="showComment()">Comment</button>
                
 <div class="votePost">
