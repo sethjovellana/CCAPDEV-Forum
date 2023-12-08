@@ -12,6 +12,7 @@ router.use(
     secret: "your-secret-key", // Change this to a secure secret key
     resave: false,
     saveUninitialized: true,
+    cookie: { httpOnly: true, maxAge: oneDay },
   })
 );
 
