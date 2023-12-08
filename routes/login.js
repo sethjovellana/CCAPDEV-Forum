@@ -25,17 +25,31 @@ router.post("/", async (req, res) => {
   try {
     const { user_name, password } = req.body;
 
-    const user = await User.findOne({ user_name });
-console.log(user);
+    const userMatch = await User.findOne({ user_name }).then(user => {
+      console.log(userMatch);
+      if (user==null){
+        return false;
+      }else {
+        return true;
+      }
+    });
+console.log(userMatch);
     
-    if (!user) {
+    if (userMatch==false) {
       req.session.error = true;
       return res.redirect("/login");
     }
 
-    const passwordMatch = await bcrypt.compare(password, user.password);
+    const passwordMatch = await bcrypt.compare(password, user.password).then(password => {
+      console.log(password);
+      if (password==null){
+        return false;
+      }else {
+        return true;
+      }
+    });
 
-    if (!passwordMatch) {
+    if (passwordMatch==false) {
       req.session.error = true;
       return res.redirect("/login");
     }
