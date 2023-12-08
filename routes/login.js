@@ -26,7 +26,8 @@ router.post("/", async (req, res) => {
     const { user_name, password } = req.body;
 
     const user = await User.findOne({ user_name });
-
+console.log(user);
+    
     if (!user) {
       req.session.error = true;
       return res.redirect("/login");
