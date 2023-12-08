@@ -37,7 +37,7 @@ console.log(userMatch);
     
     if (userMatch==false) {
       req.session.error = true;
-      return res.redirect("/login");
+      return res.render("login");
     }
 
     const passwordMatch = await bcrypt.compare(password, user.password).then(password => {
@@ -51,22 +51,26 @@ console.log(userMatch);
 
     if (passwordMatch==false) {
       req.session.error = true;
-      return res.redirect("/login");
+      return res.render("login");
     }
 
-    // If the credentials are valid, set the user as authenticated in the session
-    req.session.user = {
+  // If the credentials are valid, set the user as authenticated in the session
+    if(userMatch && passwordMatch){
+       req.session.user = {
       email: user.email,
       full_name: user.full_name,
       user_name: user.user_name,
       // Add other relevant user data as needed
-    };
-
-    res.redirect(`/home?user_name=${user.user_name}&email=${user.email}`);
+      res.redirect(`/home?user_name=${user.user_name}&email=${user.email}`);
+       };  
+    }
+      
+    
+    
   } catch (error) {
     console.error(error);
     req.session.error = true;
-    res.redirect("/login");
+    res.render("login");
     // res.status(500).json({ error: "Login failed" }); // Consider rendering an error page or redirecting with an error message
   }
 });
